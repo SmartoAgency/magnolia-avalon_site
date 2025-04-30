@@ -1,0 +1,430 @@
+.sketch {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    @include to(600px){
+        overflow: hidden;
+        height: 100%;
+        min-height: -webkit-fill-available; 
+    }
+    &__title1 {
+        @include text-style-375-h-1;
+        padding-left: var(--page-side-fields);
+        padding-right: var(--page-side-fields);
+        padding-top: 60px;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        @include from-to(601px, 1024px){
+            @include text-style-768-h-1;
+        }
+        @include from(1025px){
+            padding-top: 0;
+            padding-left: 40px;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: max-content;
+            font-size: pxWidthInVw(42);
+            max-width: pxWidthInVw(450);
+        }
+    }
+    &__title2 {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+        @include text-style-375-h-2;
+        padding-bottom: 20px;
+        &--large {
+            @include text-style-375-h-1;
+        }
+        @include from(601px){
+            @include text-style-768-h-2;
+        }
+        @include from(1025px){
+            padding-top: 0;
+            padding-right: 40px;
+            right: 0;
+            left: auto;
+            top: 50%;
+            bottom: auto;
+            transform: translateY(-50%);
+            width: max-content;
+            // font-size: pxWidthInVw(42);
+            max-width: pxWidthInVw(250);
+        }
+    }
+    &__image {
+        width: 100%;
+        height: 100%;
+        background-size: 100%;
+        background-position: 50% 50%;
+        // backgroundSize: '100%',
+        // backgroundPosition: '50% 50%',
+        background-repeat: no-repeat;
+        @include from-to(601px, 1024px){
+            background-size: 110%;
+        }
+    }
+
+    @include from(601px){
+        [data-sketch-scene1-title] {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+    }
+}
+
+
+section {
+    position: relative;
+    z-index: 2;
+}
+
+
+.front-screen {
+    position: relative;
+    z-index: 3;
+    height: calc(var(--vh, 1vh) * 100);
+    color: var(--color-white);
+    padding-left: var(--page-side-fields);
+    padding-right: var(--page-side-fields);
+    padding-bottom: 40px;
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: var(--header-h);
+        height: 100%;
+        @include from(1025px){
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: pxWidthInVw(175);
+        }
+    }
+    &__decor {
+        @include from-to(601px, 1024px){
+            height: 287.933px;
+            width: auto;
+            margin-bottom: 36px;
+            margin-top: auto;
+        }
+        @include from(1025px){
+            width: 27.614583vw;
+            height: auto;
+            margin-left: auto;
+            margin-right: 50px;
+        }
+    }
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .swiper-container {
+        height: 100%;
+    }
+    &__title{
+        text-align: center;
+        margin-bottom: 60px;
+        @include text-style-375-h-1;
+        @include from-to(601px, 1024px){
+            @include text-style-768-h-1;
+            max-width: 520px;
+            margin-bottom: 80px;
+        }
+        @include from(1025px){
+            @include text-style-1920-h-1;
+            width: calc(50% - pxWidthInVw(175));
+            text-align: left;
+            margin-bottom: 0;
+            // margin-left: auto;
+        }
+    }
+    &__arrow {
+        cursor: pointer;
+        [data-second] path {
+            animation: homeDownArrowAnimSecond 1.85s infinite;
+        }
+        [data-first] path {
+            animation: homeDownArrowAnim 1.85s infinite;
+        }
+        @include from-to(601px, 1024px){
+            margin-top: auto;
+        }
+        @include from(1025px){
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            margin-bottom: pxInVh(80);
+            transform: translateX(-50%);
+        }
+    }
+}
+
+
+
+@keyframes homeDownArrowAnim {
+    0% {
+        transform: translateY(0px);
+    }
+    
+    70% {
+        transform: translateY(58px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(58px);
+        opacity: 0;
+    }
+}
+@keyframes homeDownArrowAnimSecond {
+    0% {
+        transform: translateY(-58px);
+    }
+    
+    70% {
+        transform: translateY(0)
+    }
+    100% {
+        transform: translateY(0)
+    }
+}
+
+
+.sketch-section {
+    @include to(1024px){
+        padding-top: 100vh;
+    }
+    @include to(600px){
+        padding-top: 80vh;
+    }
+    &[data-sketch-play="7"] {
+        @include to(600px){
+            padding-top: 120vh;
+        }
+    }
+    // @include from-to(601px, 1024px){}
+    @include from(1025px){
+        padding-top: 30vh;
+        padding-top: 0;
+        padding-bottom: 30vh;
+    }
+    
+    .card {
+        position: sticky;
+        top: 0;
+        margin-bottom: 50vh;
+        @include from-to(601px, 1024px){
+            margin-right: 105px;
+            top: 50vh;
+            margin-bottom: 0;
+        }
+    }
+    
+    
+    .gallery-block {
+        @include from(601px){
+            width: 50%;
+            margin-right: auto;
+        }
+    }
+
+    @include from-to(601px, 1024px){
+        &[data-sketch-play="2"] .card {
+            margin-right: 30px;
+            top: 50vh;
+            margin-bottom: 0;
+            margin-left: auto;
+        }
+        &[data-sketch-play="3"] {
+            .card {
+                margin-right: auto;
+                top: 50vh;
+                margin-bottom: 0;
+                margin-left: 86px;
+            }
+            .card__number {
+                left: 50%;
+                top: auto;
+                bottom: -20px;
+                right: auto;
+                transform: translate(-50%, 100%);
+            }
+            .gallery-block {
+                margin-right: 0;
+                margin-left: auto;
+            }
+        }
+        &[data-sketch-play="4"] {
+            .card {
+                margin-right: auto;
+                top: 20vh;
+                margin-bottom: 0;
+                margin-left: 30px;
+            }
+            .card__number {
+                left: 50%;
+                top: auto;
+                bottom: -20px;
+                right: auto;
+                transform: translate(-50%, 100%);
+            }
+            .gallery-block {
+                margin-right: 0;
+                margin-left: auto;
+            }
+        }
+        &[data-sketch-play="5"] {
+            .card {
+                margin-right: auto;
+                top: 35vh;
+                margin-bottom: 0;
+                margin-left: 60px;
+            }
+            .gallery-block {
+                margin-right: 0;
+                margin-left: auto;
+            }
+        }
+        &[data-sketch-play="6"] {
+            .card {
+                margin-left: auto;
+                top: 15vh;
+                margin-bottom: 0;
+                margin-right: 20px;
+            }
+            .gallery-block {
+                margin-right: auto;
+                margin-left: 0;
+            }
+            .card__number {
+                left: -20px;
+                top: 50%;
+                bottom: auto;
+                right: auto;
+                transform: translate(-100%, -50%);
+            }
+        }
+    }
+
+    @include from(1025px){
+        &[data-sketch-play="1"]  {
+            .gallery-block {
+                width: pxWidthInVw(630);
+                margin-left: pxWidthInVw(210);
+                
+            }
+            .card {
+                margin-right: pxWidthInVw(630);
+                top: 50vh;
+                margin-bottom: 0;
+                margin-left: auto;
+            }
+        }
+        &[data-sketch-play="2"] {
+            .gallery-block {
+                width: pxWidthInVw(630);
+                margin-left: pxWidthInVw(195);
+                
+            }
+            .card {
+                margin-right: pxWidthInVw(538);
+                top: 50vh;
+                margin-bottom: 0;
+                margin-left: auto;
+            }
+        }
+        &[data-sketch-play="3"] {
+            .gallery-block {
+                width: pxWidthInVw(630);
+                margin-left: pxWidthInVw(1047);
+                
+            }
+            .card {
+                margin-right: pxWidthInVw(1062);
+                top: 35vh;
+                margin-bottom: 0;
+                margin-left: auto;
+            }
+            .card__number {
+                left: 50%;
+                top: auto;
+                bottom: -20px;
+                right: auto;
+                transform: translate(-50%, 100%);
+            }
+        }
+        &[data-sketch-play="4"] {
+            .gallery-block {
+                width: pxWidthInVw(630);
+                margin-left: pxWidthInVw(1047);
+                
+            }
+            .card {
+                margin-right: pxWidthInVw(1062);
+                top: 20vh;
+                margin-bottom: 0;
+                margin-left: auto;
+            }
+            .card__number {
+                left: 50%;
+                top: auto;
+                bottom: -20px;
+                right: auto;
+                transform: translate(-50%, 100%);
+            }
+        }
+        &[data-sketch-play="5"] {
+            .gallery-block {
+                width: pxWidthInVw(630);
+                margin-left: pxWidthInVw(1047);
+                
+            }
+            .card {
+                margin-right: pxWidthInVw(1062);
+                top: 27vh;
+                margin-bottom: 0;
+                margin-left: auto;
+            }
+        }
+        &[data-sketch-play="6"] {
+            .gallery-block {
+                width: pxWidthInVw(630);
+                margin-left: pxWidthInVw(195);
+                
+            }
+            .card {
+                margin-right: pxWidthInVw(572);
+                top: 50px;
+                margin-bottom: 0;
+                margin-left: auto;
+            }
+            .card__number {
+                left: -20px;
+                top: 50%;
+                bottom: auto;
+                right: auto;
+                transform: translate(-100%, -50%);
+            }
+        }
+    }
+}

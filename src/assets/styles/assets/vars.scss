@@ -1,0 +1,204 @@
+$default-font: "Alethia Next",
+	sans-serif;
+$default-font2: "GraphikLCG",
+	sans-serif;
+
+$mc: #fff;
+$mc2: #FF554C;
+$mc3: #E5DF06;
+$mc4: #4F90B6;
+$gray: rgb(135, 135, 151);
+$text: #22223E;
+$wc: #fff;
+$bc: #000;
+$bc2: #000;
+$light: #fff;
+$dark: #000;
+$gold: #CFA46E;
+$gold2: #CFA46E;
+
+$color-white: rgba(239,236,228,1);
+$color-green: rgba(82,94,82,1);
+$color-graphit: rgba(57,64,73,1);
+
+:root {
+	--color-white: rgba(239,236,228,1);
+	--color-green: rgba(82,94,82,1);
+	--color-graphit: rgba(57,64,73,1);
+}
+
+.text-color-white { 
+	color: var(--color-white);
+}
+.text-color-white-06 { 
+	color: rgba($color-white, 0.6);
+}
+.text-color-green { 
+	color: var(--color-green);
+}
+.text-color-graphit { 
+	color: var(--color-graphit);
+}
+
+:root {
+	--in: cubic-bezier(0.13, 0.81, 0.23, 0.96);
+	--header-h: 90px;
+	--logo-w: 155px;
+	--sliceFigure: 239px;
+	--sliceFigure-big: 541px;
+	--page-side-fields: 40px;
+	--section-v-offset: 210px;
+	--button-color: #001A58;
+}
+
+@media screen and (max-width: 1620px) {
+	:root {
+		--header-h: 86px;
+		--logo-w: 120px;
+		--sliceFigure-big: 362px;
+		--section-v-offset: 100px;
+	}
+}
+
+@media screen and (max-width:1024px){
+	:root {
+		--page-side-fields: 20px;
+		--section-v-offset: 100px;
+	}
+}
+
+
+@media screen and (max-width: 1024px) {
+	:root {
+		--header-h: 100px;
+		--logo-w: 90px;
+		--sliceFigure-big: 44px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	:root {
+		--header-h: 66px;
+		--section-v-offset: 80px;
+		--page-side-fields: 20px;
+	}
+}
+@mixin text-style-1920-h-1() {
+	font-size: Min(pxWidthInVw(72), 72px);
+	font-family: Alethia Next;
+	font-weight: 300;
+	font-style: normal;
+	line-height: 120%;
+	letter-spacing: 0.05em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+@mixin text-style-768-h-1() {
+	font-size: 48px;
+	font-family: Alethia Next;
+	font-weight: 300;
+	font-style: normal;
+	line-height: 120%;
+	letter-spacing: 0.05em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+@mixin text-style-768-h-2() {
+	font-size: 24px;
+	font-family: Alethia Next;
+	font-weight: 300;
+	font-style: normal;
+	line-height: 120%;
+	letter-spacing: 0.05em;
+	text-decoration: none;
+	text-transform: uppercase;
+	@media screen and (min-width:1025px){
+		font-size: min(pxWidthInVw(24), 24px);
+	}
+}
+@mixin text-style-375-h-1() {
+	font-size: 32px;
+	font-family: Alethia Next;
+	font-weight: 300;
+	font-style: normal;
+	line-height: 120%;
+	letter-spacing: 0.05em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+@mixin text-style-375-h-2() {
+	font-size: 16px;
+	font-family: Alethia Next;
+	font-weight: 350;
+	font-style: normal;
+	line-height: 120%;
+	letter-spacing: 0.05em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+@mixin text-style-375-body() {
+	font-size: 14px;
+	font-family: 'GraphikLCG';
+	font-weight: 400;
+	font-style: normal;
+	line-height: 140%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+@mixin text-style-375-button() {
+	font-size: 10px;
+	font-family: Alethia Next;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 140%;
+	letter-spacing: 0.1em;
+	text-decoration: none;
+	text-transform: none;
+}
+@mixin text-style-375-decorative-не-используем-в-макете() {
+	font-size: 100px;
+	font-family: BuongiornoRastellinoCyrl;
+	line-height: 100%;
+	text-decoration: none;
+	text-transform: none;
+}
+@mixin text-style-375-tiny() {
+	font-size: 10px;
+	font-family: 'GraphikLCG';
+	font-weight: 400;
+	font-style: normal;
+	line-height: 140%;
+	letter-spacing: -0.04em;
+	text-decoration: none;
+	text-transform: none;
+}
+
+
+.text-style-1920-h-1 {
+	@include text-style-1920-h-1;
+}
+.text-style-768-h-1 {
+	@include text-style-768-h-1;
+}
+.text-style-768-h-2 {
+	@include text-style-768-h-2;
+}
+.text-style-375-h-1 {
+	@include text-style-375-h-1;
+}
+.text-style-375-h-2 {
+	@include text-style-375-h-2;
+}
+.text-style-375-body {
+	@include text-style-375-body;
+}
+.text-style-375-button {
+	@include text-style-375-button;
+}
+.text-style-375-decorative-не-используем-в-макете {
+	@include text-style-375-decorative-не-используем-в-макете;
+}
+.text-style-375-tiny {
+	@include text-style-375-tiny;
+}

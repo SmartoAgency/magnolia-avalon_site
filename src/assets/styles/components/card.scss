@@ -1,0 +1,89 @@
+.card {
+    background-color: var(--color-white);
+    padding: 40px 20px 20px 20px;
+    max-width: 240px;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    &--reverse {
+        margin-left: 0;
+        margin-right: auto;
+    }
+    &__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__title {
+        /* 375/H2 */
+        font-family: "Alethia Next";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 350;
+        line-height: 120%; /* 19.2px */
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+    &__text {
+        margin-bottom: 20px;
+    }
+    &__link {
+        @include text-style-375-body;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        .link__graphic--slide {
+            top: -3px;
+            stroke-width: 2px;
+            transition: transform 0.7s;
+            transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+        }
+        
+        .link__graphic {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            fill: none;
+            stroke: #000;
+            stroke-width: 1px;
+        }
+        &:hover {
+            .link__graphic--slide {
+                transform: translate3d(-66.6%, 0, 0);
+            }
+        }
+    }
+    &__icon {
+
+    }
+    &__number {
+        background-color: var(--color-graphit);
+        color: var(--color-white);
+        border-radius: 100px;
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 7px 14px;
+        @include text-style-375-h-2;
+        @include from(601px){
+            top: -20px;
+            transform: translate(50%, -100%);
+            right: 50%;
+        }
+    }
+    &--reverse &__number {
+            right: auto;
+            left: 100%;
+            transform: translate(50%, -50%);
+            @include from(601px){
+                top: -20px;
+                transform: translate(50%, -100%);
+                right: 50%;
+                left: auto;
+            }
+    }
+}

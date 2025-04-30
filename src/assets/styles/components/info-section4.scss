@@ -1,0 +1,127 @@
+.info-section4 {
+    background-color: var(--color-graphit);
+    color: var(--color-white);
+    padding-top: var(--section-v-offset);
+    padding-bottom: var(--section-v-offset);
+    @include from-to(601px, 1024px){
+        display: grid; 
+        grid-template-columns: 1fr 118px 1.45fr; 
+        grid-template-rows: auto auto auto 100px auto; 
+        gap: 0px 0px; 
+    }
+    
+    @include from(1025px){
+        background-color: var(--color-graphit);
+        display: grid; 
+        grid-template-columns: auto 130px 1fr 130px auto; 
+        grid-template-rows: repeat(5, auto); 
+        column-gap: 20px;
+        padding-left: pxWidthInVw(118);
+        padding-right: pxWidthInVw(118);
+    }
+    &__card {
+        background-color: var(--color-green);
+        padding: 40px 20px;
+        @include from(1025px){
+            max-width: 360px;
+            
+            position: relative;
+            z-index: 2;
+        }
+        &-title {
+            @include text-style-375-h-2;
+            margin-bottom: 20px;
+            @include from(601px){
+                @include text-style-768-h-2
+            }
+        }
+        &-text {
+            @include text-style-375-body;
+            
+        }
+        &.card1 {
+            @include from-to(601px, 1024px){
+                grid-area: 1 / 1 / 3 / 3;
+                height: max-content;
+                position: relative;
+                z-index: 2;
+                margin-left: var(--page-side-fields);
+            }
+            @include from(1025px){
+                grid-area: 1 / 1 / 3 / 3;
+            }
+            @include to(600px){
+                margin-left: auto;
+                max-width: 240px;
+            }
+        }
+        &.card2 {
+            @include to(600px){
+                margin-right: auto;
+                max-width: 240px;
+            }
+            @include from-to(601px, 1024px){
+                grid-area: 5 / 3 / 6 / 4;
+                margin-right: var(--page-side-fields);
+            }
+            @include from(1025px){
+                grid-area: 4 / 4 / 6 / 6;
+
+            }
+
+        }
+    }
+    &__decor {
+        margin-top: -120px;
+        margin-bottom: -20px;
+        position: relative;
+        z-index: -1;
+        transform: translateX(-20%);
+
+        @include from(601px){
+            position: absolute;
+            top: 65%;
+            left: 40px;
+            transform: none;
+        }
+        @include from(1025px){
+            left: pxWidthInVw(118);
+        }
+        svg {
+            height: 336px;
+            width: auto;
+        }
+    }
+    &__img {
+        overflow: hidden;
+        @include to(600px){
+            padding-left: var(--page-side-fields);
+            padding-right: var(--page-side-fields);
+            margin-bottom: var(--section-v-offset);
+        }
+        @include from-to(601px, 1024px){
+            grid-area: 2 / 2 / 4 / 4;
+        }
+        @include from(1025px){
+            grid-area: 2 / 2 / 5 / 5;
+        }
+        &-wrap {
+            position: relative;
+            padding-bottom: 100%;
+            @include from(1025px){
+                padding-bottom: 59%;
+            }
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                @include from(1025px){
+                    object-position: top;
+                }
+            }
+        }
+    }
+}

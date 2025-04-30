@@ -1,0 +1,116 @@
+.header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 14px var(--page-side-fields);
+	&.headroom--not-top {
+		mix-blend-mode: difference;
+	}
+	&.headroom--not-top &__logo {
+		opacity: 0;
+	}
+	&.headroom--not-top &__menu-open {
+		// transform: translateY(-100%);
+	}
+	@include from-to(601px, 1024px){
+		padding-top: 42px;
+		padding-bottom: 42px;
+	}
+	&__logo {
+		transition: opacity .25s ease-in-out;
+		svg {
+			height: 36px;
+			width: auto;
+		}
+	}
+	&__menu-open {
+		display: flex;
+		width: 36px;
+		height: 36px;
+		padding: 12px 10px;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 2px;
+		flex-shrink: 0;
+		border-radius: 100px;
+		background: rgba(239, 236, 228, 0.10);
+		position: absolute;
+		right: var(--page-side-fields);
+		top: 50%;
+		transform: translateY(-50%);
+		cursor: pointer;
+		transition: .25s ease-in-out;
+		@media (hover: hover) {
+			svg rect {
+				transition: transform .25s ease-in-out;
+				transform-origin: center;
+				transform-box: fill-box;
+			}
+			&:hover rect {
+				&:nth-child(2) {
+					transform: translateX(5px);
+				}
+				&:nth-child(3) {
+					transform: translateX(2px);
+				}
+			}
+		}
+	}
+}
+
+.mobile-callback-popup {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100%;
+	// height: fill-available;
+	// height: -moz-available;          /* WebKit-based browsers will ignore this. */
+	min-height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+	// background-color: rgba($color-black, 0.8);
+	z-index: 61 !important;
+	display: flex;
+	flex-direction: column;
+	align-content: flex-end;
+	justify-content: flex-end;
+	padding: 10px;
+	line-height: 100%;
+	opacity: 0;
+	visibility: hidden;
+	&.active {
+		opacity: 1;
+		visibility: visible;
+	}
+	&>* {
+		text-decoration: none;
+		width: 100%;
+		height: 50px;
+		font-size: 14px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: var(--color-gradient);
+		border-radius: 100px;
+		color: var(--color-black);
+		font-family: $default-font;
+		text-transform: uppercase;
+
+	}
+	&>:nth-child(n+2) {
+	  	margin-top: 10px;
+	}
+	&__close {
+		// background-color: var(--color-new-blue);
+		background-color: var(--color-black);
+		color: var(--color-white);
+		border-radius: 100px;
+		border: 1px solid var(--Stroke, #36363A);
+		background: var(--Black, #1A1A1D);
+	}
+}
