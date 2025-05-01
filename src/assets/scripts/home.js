@@ -639,3 +639,38 @@ function createResponsiveTimeline({
     clearTimeout(resizeTimeout);
   };
 }
+
+
+if (window.screen.width < 600) {
+  document.body.addEventListener('click',function(evt){
+    const target = evt.target.closest('.menu__link');
+    if (!target) return;
+    evt.preventDefault();
+    const targetId = target.getAttribute('href').replace('#', '');
+    const targetSection = document.getElementById(targetId);
+    if (!targetSection) return;
+
+    const sectionTopPadding = parseInt(getComputedStyle(targetSection).paddingTop);
+
+    window.scrollTo({
+      top: sectionTopPadding + position(targetSection)[1],
+    });
+    
+    const url = new URL(window.location.href);
+    url.hash = target.getAttribute('href');
+    window.history.pushState({}, '', url);
+  });
+}
+
+
+function position(elem) { 
+  var left = 0, 
+      top = 0; 
+
+  do { 
+      left += elem.offsetLeft-elem.scrollLeft; 
+      top += elem.offsetTop-elem.scrollTop; 
+  } while ( elem = elem.offsetParent ); 
+
+  return [ left, top ]; 
+} 
