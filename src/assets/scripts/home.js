@@ -132,38 +132,40 @@ function sketchHandler() {
         // markers: true,
       }
     })
-    const animationProps = isMobile
-      ? { x: index % 2 === 0 ? 50 : -50, autoAlpha: 0 }
-      : { autoAlpha: 0, y: 50 };
+    const animationProps = { autoAlpha: 0, y: 50 };
 
-    const targetProps = isMobile
-      ? { x: 0, autoAlpha: 1 }
-      : { autoAlpha: 1, y: 0 };
+    const targetProps = { autoAlpha: 1, y: 0 };
 
     cardTl.fromTo(card, animationProps, targetProps);
   })
-  // const sketchEndScreenPin = createResponsiveTimeline({
-  //   createTimelineFn: () => {
-  //     return gsap.timeline({
-  //       defaults: {
-  //         ease: 'none',
-  //         force3D: true,
-  //       },
-  //       scrollTrigger: {
-  //         trigger: '[data-sketch-end]',
-  //         start: 'top bottom',
-  //         end: `${window.innerHeight} bottom`,
-  //         scrub: 0,
-  //         markers: false,
-  //       }
-  //     })
-  //     .to(sketch, {
-  //       y: window.innerHeight * -1,
-  //       ease: 'none'
-  //     })
 
-  //   }
-  // })
+
+  if (window.screen.width < 600) {
+    window.sketchEndScreenPin = createResponsiveTimeline({
+      createTimelineFn: () => {
+        return gsap.timeline({
+          defaults: {
+            ease: 'none',
+            force3D: true,
+          },
+          scrollTrigger: {
+            trigger: '[data-sketch-end]',
+            start: 'top bottom',
+            end: `${window.innerHeight} bottom`,
+            scrub: 0,
+            // markers: true,
+          }
+        })
+        .fromTo(sketch, {
+          y: 0
+        }, {
+          y: window.innerHeight * -1,
+          ease: 'none'
+        })
+  
+      }
+    })
+  }
   const sketchStartScreenPin = createResponsiveTimeline({
     createTimelineFn: () => {
       return gsap.timeline({
@@ -513,7 +515,7 @@ function infoSection4Paralax() {
   const img = document.querySelector('.info-section4__img img');
   const decor = document.querySelector('.info-section4__decor svg');
 
-  const maxOffsetInPercent = 30;
+  const maxOffsetInPercent = 20;
   const yPercentage = window.innerWidth * maxOffsetInPercent / 1920;
 
   gsap.set([img], {
@@ -527,9 +529,9 @@ function infoSection4Paralax() {
     }
   })
   .fromTo(decor, {
-    yPercent: yPercentage*-1,
+    yPercent: yPercentage*-1 + 5,
   }, {
-    yPercent: yPercentage
+    yPercent: yPercentage - 5
   },'<')
   .fromTo(img, {
     y: 0,

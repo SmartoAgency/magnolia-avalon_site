@@ -80,7 +80,26 @@ const [menuState, setMenuState, useSetMenuEffect] = useState(false);
 
 useSetMenuEffect(val => {
     const menu = document.querySelector('[data-menu]');
-    menu.classList.toggle('active', val);
+    // menu.classList.toggle('active', val);
+    const tl = gsap.timeline({
+        paused: true,
+    });
+    if (val) {
+        tl.add(() => {
+            menu.classList.add('active');
+        })
+            .fromTo(menu.querySelector('.menu__content'), { xPercent: 100 }, { xPercent: 0, duration: 1, ease: 'power4.inOut' })
+            .fromTo(menu.querySelector('.menu__bg'), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: 'power4.inOut' })
+    } else {
+        tl.fromTo(menu.querySelector('.menu__content'), { xPercent: 0 }, { xPercent: 100, duration: 0.5, ease: 'power4.inOut' })
+            .fromTo(menu.querySelector('.menu__bg'), { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.25, ease: 'power4.inOut' })
+            .add(() => {
+                menu.classList.remove('active');
+            });
+    }
+    tl.play();
+
+
     if (val) {
         const vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);

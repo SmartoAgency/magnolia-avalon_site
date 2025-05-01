@@ -57,7 +57,7 @@
                 padding-bottom: 62.5%;
             }
             @include from(1025px){
-                padding-bottom: 68.5%;
+                padding-bottom: 100vh;
             }
             img {
                 position: absolute;

@@ -224,5 +224,9 @@
     &__small-link {
         color: var(--color-graphit); 
         text-decoration: underline;
+        transition: .25s ease-in-out;
+        &:hover {
+            color: var(--color-green);
+        }
     }
 }
