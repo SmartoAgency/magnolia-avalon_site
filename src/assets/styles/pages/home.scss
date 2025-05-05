@@ -21,6 +21,12 @@
         left: 0;
         top: 0;
         width: 100%;
+        @include to(600px){
+            @include text-style-375-h-2;
+            
+            padding-left: 40px;
+            padding-right: 40px;
+        }
         @include from-to(601px, 1024px){
             @include text-style-768-h-1;
         }
@@ -44,8 +50,11 @@
         text-align: center;
         @include text-style-375-h-2;
         padding-bottom: 20px;
+        svg {
+            margin-top: 8px;
+        }
         &--large {
-            @include text-style-375-h-1;
+            // @include text-style-375-h-1;
         }
         @include from(601px){
             @include text-style-768-h-2;
@@ -228,7 +237,8 @@ section {
         padding-top: 100vh;
     }
     @include to(600px){
-        padding-top: calc(var(--vh) * 80);
+        // padding-top: calc(var(--vh) * 80);
+        padding-top: calc(var(--vh) * 50);
     }
     &[data-sketch-play="7"] {
         @include to(600px){

@@ -219,12 +219,13 @@ const sketch = sketchHandler();
 
 sketch(0);
 
-document.querySelectorAll('[data-sketch-play]').forEach((el) => {
+document.querySelectorAll('[data-sketch-play]').forEach((el,i) => {
   ScrollTrigger.create({
     trigger: el,
     start: 'top 50%',
     end: 'bottom 50%',
     markers: false,
+    id: i + 1,
     onEnter: () => {
       const sceneNumber = el.getAttribute('data-sketch-play');
       sketch(sceneNumber);
