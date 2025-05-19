@@ -129,7 +129,10 @@ function sketchHandler() {
         start: startProps,
         end: endProps,
         scrub: 1,
-        // markers: true,
+        // markers: {
+        //     startColor: "red",
+        //     endColor: "red"
+        //   },
       }
     })
     const animationProps = { autoAlpha: 0, y: 50 };
@@ -137,10 +140,60 @@ function sketchHandler() {
     const targetProps = { autoAlpha: 1, y: 0 };
 
     cardTl.fromTo(card, animationProps, targetProps);
-  })
+  });
+
+  let timeout = null;
 
 
+  
+  
+  
   if (window.screen.width < 600) {
+    /**Доскролювання до карток на мобільній версії */
+    document.querySelectorAll('[data-sketch-play]').forEach((el, index) => {
+      const cardTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          scrub: 1,
+          start: `${window.innerHeight * 0.33} 50%`,
+          end: `${window.innerHeight * 0.66} 50%`,
+          onEnter: () => {
+            if (timeout) {
+              clearTimeout(timeout);
+            }
+
+            if (index === 0)  {
+              timeout = setTimeout(() => {
+                const card = document.querySelector('[data-sketch-play="1"] .card');
+                if (!card) return;
+                card.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start',
+                });
+              }, 3000);
+              return;
+            }
+            timeout = setTimeout(() => {
+              const card = el.querySelector('.card');
+              if (!card) return;
+              card.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              });
+            }, 2000);
+          },
+          onLeave: () => {
+            if (timeout) {
+              clearTimeout(timeout);
+            }
+          },
+          // markers: {
+          //   startColor: "white",
+          //   endColor: "white"
+          // },
+        }
+      })
+    })
     window.sketchEndScreenPin = createResponsiveTimeline({
       createTimelineFn: () => {
         return gsap.timeline({
